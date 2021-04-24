@@ -1,0 +1,15 @@
+
+setwd("C:/Users/iozeris/OneDrive/Desktop/Mestrado - eco")
+library (gamm4)
+estrito<-read.csv2("planilha_estritos.csv", h=T ,sep=";")
+
+estrito$PROP0 <- as.numeric(as.character(estrito$PROP0))
+
+estrito$anom.min <- as.numeric(as.character(estrito$anom.min))
+
+estrito$CP <- as.factor(as.character(estrito$catclasses))
+
+model.gamm<- gamm4(PROP0 ~ s(anom.min, by= CP), random= ~(1|sp), data=estrito, na.action = na.omit)
+summary(model.gamm$gam) < ISSO AQUIIIIIIIIIII!!!!!!!!!
+
+plot(model.gamm$gam)
